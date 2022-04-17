@@ -1,0 +1,19 @@
+{
+  "name": "my-electron-app",
+  "productName": "my-electron-app",
+  "description": "My Electron application description",
+  "keywords": [],
+  "main": "./main.js",
+  "version": "1.0.0",
+  "author": "rockywang",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "fetch-installed-software": "^0.0.7"
+  },
+  "devDependencies": {
+    "electron": "13.4.0",
+    "electron-rebuild": "^2.3.5"
+  }
+}
