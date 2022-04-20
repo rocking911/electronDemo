@@ -2,18 +2,54 @@
   "name": "my-electron-app",
   "productName": "my-electron-app",
   "description": "My Electron application description",
+  "license": null,
   "keywords": [],
   "main": "./main.js",
   "version": "1.0.0",
   "author": "rockywang",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "distWin64": "electron-builder --win --x64",
+    "distWin32": "electron-builder --win --ia32"
   },
-  "dependencies": {
-    "fetch-installed-software": "^0.0.7"
+  "build": {
+    "productName": "electronDemo",
+    "appId": "com.electronDemo",
+    "files": [
+      "**/*",
+      "!**/node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme}",
+      "!**/node_modules/*/{test,__tests__,tests,powered-test,example,examples}",
+      "!**/node_modules/*.d.ts",
+      "!**/node_modules/.bin",
+      "!**/*.{iml,o,hprof,orig,pyc,pyo,rbc,swp,csproj,sln,xproj}",
+      "!.editorconfig",
+      "!**/._*",
+      "!**/{.DS_Store,.git,.hg,.svn,CVS,RCS,SCCS,.gitignore,.gitattributes}",
+      "!**/{__pycache__,thumbs.db,.flowconfig,.idea,.vs,.nyc_output}",
+      "!**/{appveyor.yml,.travis.yml,circle.yml}",
+      "!**/{npm-debug.log,yarn.lock,.yarn-integrity,.yarn-metadata.json}"
+    ],
+    "win": {
+      "artifactName": "electronDemoSetup.${version}.${ext}",
+      "target": [
+        "nsis"
+      ]
+    },
+    "asar": true,
+    "electronDownload": {
+      "mirror": "https://npm.taobao.org/mirrors/electron/"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
   },
   "devDependencies": {
     "electron": "13.4.0",
+    "electron-builder": "^23.0.3",
     "electron-rebuild": "^2.3.5"
   }
 }
